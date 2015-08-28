@@ -1,4 +1,5 @@
-from pages.sauceguineapig import SauceGuineaPig
+from pages.sauceguineapigmain import SauceGuineaPig
+from pages.sauceguineapig2 import SauceGuineaPig2
 
 @given('we are looking at the guinea pig website')
 def step_impl(context):
@@ -20,3 +21,16 @@ def step_impl(context):
 def step_impl(context):
   value = context.page.find_email_input().get_attribute('value')
   assert value == 'kevinmarkvi@gmail.com', "The value is incorrect"
+
+@given('we are on the guinea pig website')
+def step_impl(context):
+  context.page = SauceGuineaPig(context.browser)
+
+@when('I click on the link')
+def step_impl(context):
+  context.page.find_link().click
+
+@then('I should see a new page')
+def step_impl(context):
+  context.page = SauceGuineaPig2(context.browser)
+  assert 'another' in context.page.get_title()

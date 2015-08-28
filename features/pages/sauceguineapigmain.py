@@ -13,5 +13,8 @@ class SauceGuineaPig(Page):
   def find_email_input(self):
     return self.driver.find_element_by_id('fbemail') 
 
+  def find_link(self):
+    return self.driver.find_element_by_tag_name('a')
+
 
 
