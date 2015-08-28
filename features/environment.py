@@ -3,10 +3,8 @@ import time
 from selenium import webdriver
 from sauceclient import SauceClient
 
-# username = os.environ.get('SAUCE_USERNAME')
-# access_key = os.environ.get('SAUCE_ACCESS_KEY')
-username = "KevinMarkVI"
-access_key = "105a063b-8837-4c2d-b323-d6a86c71ff97"
+username = os.environ.get('SAUCE_USERNAME')
+access_key = os.environ.get('SAUCE_ACCESS_KEY')
 assert username, "Unable to pull username from environment variables"
 assert access_key, "Unable to pull access_key from environment variables"
 
