@@ -1,5 +1,11 @@
+from selenium import webdriver
 from pages.saucemain import SauceMain
 from pages.saucepricing import SaucePricing
+from features.browser.browsers import make_browser
+
+@given('we are on "{platform}" using "{browser_name}" version "{version}"')
+def step_impl(context, platform, browser_name, version):
+  context.browser = make_browser(context.name, platform, browser_name, version)
 
 @given('we are looking at the sauce labs website')
 def step_impl(context):
@@ -7,7 +13,7 @@ def step_impl(context):
 
 @when('we click on the pricing link')
 def step_impl(context):
-  context.page.find_pricing_link().click
+  context.page.find_pricing_link().click()
   context.page = SaucePricing(context.browser)
   assert "Pricing" in context.page.get_title(), "Couldn't find 'Pricing' in the title"
 
